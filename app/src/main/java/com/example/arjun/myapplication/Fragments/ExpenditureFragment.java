@@ -18,6 +18,7 @@ import com.example.arjun.myapplication.Data.NotesAdapter;
 import com.example.arjun.myapplication.R;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -59,17 +60,17 @@ public class ExpenditureFragment extends Fragment {
     void setuplist() {
 
         ArrayList<Expenditure> expenditureArrayList = new ArrayList<>();
-        expenditureArrayList.add(new Expenditure("petrol", 100.55d));
-        expenditureArrayList.add(new Expenditure("petrol", 100.55d));
-        expenditureArrayList.add(new Expenditure("petrol", 1050.55d));
-        expenditureArrayList.add(new Expenditure("petrol", 1090.55d));
-        expenditureArrayList.add(new Expenditure("petrol", 1000.55d));
-        expenditureArrayList.add(new Expenditure("petrol", 100.55d));
-        expenditureArrayList.add(new Expenditure("petrol", 1000.55d));
-        expenditureArrayList.add(new Expenditure("petrol", 10000.55d));
-        expenditureArrayList.add(new Expenditure("petrol", 100.55d));
-        expenditureArrayList.add(new Expenditure("petrol", 100.55d));
-        expenditureArrayList.add(new Expenditure("petrol", 100.55d));
+        expenditureArrayList.add(new Expenditure("petrol", 100.55d,new Date()));
+        expenditureArrayList.add(new Expenditure("petrol", 100.55d,new Date()));
+        expenditureArrayList.add(new Expenditure("petrol", 1050.55d,new Date()));
+        expenditureArrayList.add(new Expenditure("petrol", 1090.55d,new Date()));
+        expenditureArrayList.add(new Expenditure("petrol", 1000.55d,new Date()));
+        expenditureArrayList.add(new Expenditure("petrol", 100.55d,new Date()));
+        expenditureArrayList.add(new Expenditure("petrol", 1000.55d,new Date()));
+        expenditureArrayList.add(new Expenditure("petrol", 10000.55d,new Date()));
+        expenditureArrayList.add(new Expenditure("petrol", 100.55d,new Date()));
+        expenditureArrayList.add(new Expenditure("petrol", 100.55d,new Date()));
+        expenditureArrayList.add(new Expenditure("petrol", 100.55d,new Date()));
 
         expenditureAdapter = new ExpenditureAdapter(getActivity(), expenditureArrayList);
         listView.setAdapter(expenditureAdapter);

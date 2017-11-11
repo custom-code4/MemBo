@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.example.arjun.myapplication.R;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -29,8 +31,11 @@ public class ExpenditureAdapter extends ArrayAdapter<Expenditure> {
         Expenditure currentExpenditure = getItem(position);
         TextView expenditureTitleTextView = (TextView) listItemView.findViewById(R.id.expenditureTitleTextView);
         TextView expenditureAmountTextView = (TextView) listItemView.findViewById(R.id.expenditureAmountTextView);
+        TextView expenditureTimestampTextView = (TextView) listItemView.findViewById(R.id.expenditureTimestampTextView);
         expenditureTitleTextView.setText(currentExpenditure.getExpenditureTitle());
         expenditureAmountTextView.setText(Double.toString(currentExpenditure.getAmount()));
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        expenditureTimestampTextView.setText((dateFormat.format(currentExpenditure.getDate())).toString());
         return listItemView;
     }
 }

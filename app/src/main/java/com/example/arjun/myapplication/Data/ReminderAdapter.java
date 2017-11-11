@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import com.example.arjun.myapplication.R;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -30,7 +32,8 @@ public class ReminderAdapter extends ArrayAdapter<Reminder>{
         TextView reminderTitleTextView = (TextView) listItemView.findViewById(R.id.reminderTitleTextView);
         TextView reminderTimeTextView = (TextView) listItemView.findViewById(R.id.reminderTimeTextView);
         reminderTitleTextView.setText(currentReminder.getReminderTitle());
-        reminderTimeTextView.setText(currentReminder.getDate().toString());
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        reminderTimeTextView.setText((dateFormat.format(currentReminder.getDate())).toString());
         return listItemView;
     }
 }

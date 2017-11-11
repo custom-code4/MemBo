@@ -1,5 +1,7 @@
 package com.example.arjun.myapplication.Data;
 
+import java.util.Date;
+
 /**
  * Created by Arjun on 11-11-2017.
  */
@@ -7,10 +9,20 @@ package com.example.arjun.myapplication.Data;
 public class Expenditure {
     String expenditureTitle;
     Double amount;
+    Date date;
 
-    public Expenditure(String expenditureTitle, Double amount) {
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public Expenditure(String expenditureTitle, Double amount, Date date) {
         this.expenditureTitle = expenditureTitle;
         this.amount = amount;
+        this.date = date;
     }
 
     public String getExpenditureTitle() {

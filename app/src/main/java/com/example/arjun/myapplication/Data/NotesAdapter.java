@@ -11,6 +11,9 @@ import android.widget.TextView;
 import android.support.v7.app.AppCompatActivity;
 import com.example.arjun.myapplication.MainActivity;
 import com.example.arjun.myapplication.R;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -36,7 +39,8 @@ public class NotesAdapter extends ArrayAdapter<Note>  {
         TextView notesTimestampTextView = (TextView) listItemView.findViewById(R.id.notesTimestampTextView);
         noteTitleTextView.setText(currentNote.getNoteTitle());
         notesContentTextView.setText(currentNote.getNoteContent());
-        notesTimestampTextView.setText(currentNote.getNoteDate().toString());
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        notesTimestampTextView.setText((dateFormat.format(currentNote.getNoteDate())).toString());
         return listItemView;
     }
 

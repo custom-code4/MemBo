@@ -7,14 +7,28 @@ import java.util.Date;
  */
 
 public class Note {
+    int noteID;
     String noteTitle;
+
+    public Note() {
+    }
+
     String noteContent;
     Date noteDate;
 
-    public Note(String noteTitle, String noteContent, Date noteDate) {
+    public Note(int noteID, String noteTitle, String noteContent, Date noteDate) {
+        this.noteID = noteID;
         this.noteTitle = noteTitle;
         this.noteContent = noteContent;
         this.noteDate = noteDate;
+    }
+
+    public int getNoteID() {
+        return noteID;
+    }
+
+    public void setNoteID(int noteID) {
+        this.noteID = noteID;
     }
 
     public String getNoteTitle() {

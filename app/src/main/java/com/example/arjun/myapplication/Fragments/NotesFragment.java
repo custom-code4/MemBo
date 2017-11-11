@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import com.example.arjun.myapplication.Data.Note;
 import com.example.arjun.myapplication.Data.NotesAdapter;
+import com.example.arjun.myapplication.Data.NotesDatabaseHandler;
 import com.example.arjun.myapplication.R;
 
 import java.util.ArrayList;
@@ -25,9 +26,10 @@ import java.util.Date;
 public class NotesFragment extends Fragment {
 
 
-    private FloatingActionButton fab;
+    ArrayList<Note> notesList;
     NotesAdapter notesAdapter;
     GridView gridView;
+    NotesDatabaseHandler notesDatabaseHandler;
 
     static final String[] numbers = new String[]{
             "A", "B", "C", "D", "E",
@@ -64,29 +66,19 @@ public class NotesFragment extends Fragment {
         return view;
     }
 
-    void setuplist() {
-        ArrayList<Note> notesList = new ArrayList<>();
-        notesList.add(new Note("HELLO", "mmm", new Date()));
-        notesList.add(new Note("HELLO", "Thothan", new Date()));
-        notesList.add(new Note("Hi", "yyy", new Date()));
-        notesList.add(new Note("HELLO", "Thothan", new Date()));
-        notesList.add(new Note("how", "llkkasdjkghdkasgdkasgdhgsadjajhdbkjasdhbkjabcxbnmvbxcnvbksdfhjkdvhxjxbnjkdsnlkcnx,mvnljkdnvlknlvkxdfssssssssssssssssssssssssssssssjkfhsdhlskjdfhljksdsdfjlskdjflksdjflksjdlfsjdlfjsldfjlksdjfsdjahgdjasgdkjsadvcbvcbcbvc", new Date()));
-        notesList.add(new Note("HELLO", "ggfggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg", new Date()));
-        notesList.add(new Note("HELLO", "mmm", new Date()));
-        notesList.add(new Note("HELLO", "Thothan", new Date()));
-        notesList.add(new Note("Hi", "yyy", new Date()));
-        notesList.add(new Note("HELLO", "Thothan", new Date()));
-        notesList.add(new Note("how", "llkk", new Date()));
-        notesList.add(new Note("HELLO", "ggg", new Date()));
-        notesList.add(new Note("HELLO", "mmm", new Date()));
-        notesList.add(new Note("HELLO", "Thothan", new Date()));
-        notesList.add(new Note("Hi", "yyy", new Date()));
-        notesList.add(new Note("HELLO", "Thothan", new Date()));
-        notesList.add(new Note("how", "llkk", new Date()));
-        notesList.add(new Note("HELLO", "ggg", new Date()));
+    @Override
+    public void onResume() {
+        super.onResume();
+        setuplist();
+    }
 
+    void setuplist() {
+        notesDatabaseHandler = new NotesDatabaseHandler(getContext());
+        notesList = notesDatabaseHandler.getAllNotes();
         notesAdapter = new NotesAdapter(getActivity(), notesList);
         gridView.setAdapter(notesAdapter);
+        Toast toast = Toast.makeText(getActivity(), "SETTING UP LIST", Toast.LENGTH_SHORT);
+        toast.show();
     }
 
 }
