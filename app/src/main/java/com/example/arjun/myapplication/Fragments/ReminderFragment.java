@@ -65,7 +65,7 @@ public class ReminderFragment extends Fragment {
     }
     void setuplist() {
 
-        ArrayList<Reminder> reminderArrayList = new ArrayList<Reminder>();
+        ArrayList<Reminder> reminderArrayList = new ArrayList<>();
         reminderArrayList.add(new Reminder("Irudhi Suttru", new Date()));
         reminderArrayList.add(new Reminder("Iruxcvdhxci Sutxzvxctru", new Date()));
         reminderArrayList.add(new Reminder("IruddhiczxSuttru", new Date()));

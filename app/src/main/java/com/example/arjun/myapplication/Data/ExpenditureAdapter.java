@@ -24,7 +24,7 @@ public class ExpenditureAdapter extends ArrayAdapter<Expenditure> {
     public View getView(int position, View convertView, ViewGroup parent) {
         View listItemView = convertView;
         if (listItemView == null) {
-            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_reminder, parent, false);
+            listItemView = LayoutInflater.from(getContext()).inflate(R.layout.list_item_expenditure, parent, false);
         }
         Expenditure currentExpenditure = getItem(position);
         TextView expenditureTitleTextView = (TextView) listItemView.findViewById(R.id.expenditureTitleTextView);

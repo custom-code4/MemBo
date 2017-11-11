@@ -18,7 +18,6 @@ public class Note {
     }
 
     public String getNoteTitle() {
-
         return noteTitle;
     }
 

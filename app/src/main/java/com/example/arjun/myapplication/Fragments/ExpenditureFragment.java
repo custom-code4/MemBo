@@ -25,9 +25,6 @@ import java.util.ArrayList;
 public class ExpenditureFragment extends Fragment {
 
     ExpenditureAdapter expenditureAdapter;
-
-
-
     View view;
     ListView listView;
 
@@ -61,7 +58,7 @@ public class ExpenditureFragment extends Fragment {
 
     void setuplist() {
 
-        ArrayList<Expenditure> expenditureArrayList = new ArrayList<Expenditure>();
+        ArrayList<Expenditure> expenditureArrayList = new ArrayList<>();
         expenditureArrayList.add(new Expenditure("petrol", 100.55d));
         expenditureArrayList.add(new Expenditure("petrol", 100.55d));
         expenditureArrayList.add(new Expenditure("petrol", 1050.55d));
