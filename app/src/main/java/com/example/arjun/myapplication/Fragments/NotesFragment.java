@@ -1,9 +1,7 @@
 package com.example.arjun.myapplication.Fragments;
 
 
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +16,6 @@ import com.example.arjun.myapplication.Data.NotesDatabaseHandler;
 import com.example.arjun.myapplication.R;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,7 +23,7 @@ import java.util.Date;
 public class NotesFragment extends Fragment {
 
 
-    ArrayList<Note> notesList;
+    ArrayList<Note> notesList = new ArrayList<>();
     NotesAdapter notesAdapter;
     GridView gridView;
     NotesDatabaseHandler notesDatabaseHandler;
@@ -54,6 +51,8 @@ public class NotesFragment extends Fragment {
 
         gridView = (GridView) view.findViewById(R.id.notesGridView);
 
+        notesDatabaseHandler = new NotesDatabaseHandler(getContext());
+
 
         gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
@@ -73,10 +72,11 @@ public class NotesFragment extends Fragment {
     }
 
     void setuplist() {
-        notesDatabaseHandler = new NotesDatabaseHandler(getContext());
+
         notesList = notesDatabaseHandler.getAllNotes();
         notesAdapter = new NotesAdapter(getActivity(), notesList);
         gridView.setAdapter(notesAdapter);
+
         Toast toast = Toast.makeText(getActivity(), "SETTING UP LIST", Toast.LENGTH_SHORT);
         toast.show();
     }

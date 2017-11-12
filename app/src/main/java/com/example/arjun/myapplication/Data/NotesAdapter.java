@@ -1,19 +1,15 @@
 package com.example.arjun.myapplication.Data;
 
 import android.app.Activity;
-import android.content.Intent;
-import android.support.design.widget.FloatingActionButton;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import android.support.v7.app.AppCompatActivity;
-import com.example.arjun.myapplication.MainActivity;
+
 import com.example.arjun.myapplication.R;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 /**
@@ -21,7 +17,6 @@ import java.util.ArrayList;
  */
 
 public class NotesAdapter extends ArrayAdapter<Note>  {
-    private FloatingActionButton fab;
     public NotesAdapter(Activity context, ArrayList<Note> notes) {
         super(context, 0, notes);
     }
@@ -34,13 +29,14 @@ public class NotesAdapter extends ArrayAdapter<Note>  {
             listItemView = LayoutInflater.from(getContext()).inflate(R.layout.grid_item_notes, parent, false);
         }
         Note currentNote = getItem(position);
+        Log.d("NotesAdapter ","currentNote "+currentNote.getNoteTitle());
         TextView noteTitleTextView = (TextView) listItemView.findViewById(R.id.notesTitleTextView);
         TextView notesContentTextView = (TextView) listItemView.findViewById(R.id.notesContentTextView);
         TextView notesTimestampTextView = (TextView) listItemView.findViewById(R.id.notesTimestampTextView);
         noteTitleTextView.setText(currentNote.getNoteTitle());
         notesContentTextView.setText(currentNote.getNoteContent());
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        notesTimestampTextView.setText((dateFormat.format(currentNote.getNoteDate())).toString());
+       // DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        notesTimestampTextView.setText(currentNote.getNoteDate());
         return listItemView;
     }
 

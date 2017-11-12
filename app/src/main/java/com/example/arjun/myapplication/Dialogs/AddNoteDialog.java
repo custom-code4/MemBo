@@ -2,6 +2,7 @@ package com.example.arjun.myapplication.Dialogs;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.net.ParseException;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -12,6 +13,7 @@ import com.example.arjun.myapplication.Data.Note;
 import com.example.arjun.myapplication.Data.NotesDatabaseHandler;
 import com.example.arjun.myapplication.R;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 /**
@@ -51,7 +53,15 @@ public class AddNoteDialog extends Dialog implements View.OnClickListener {
                 Note note = new Note();
                 note.setNoteTitle(noteTitle.getText().toString());
                 note.setNoteContent(noteContent.getText().toString());
-                note.setNoteDate(new Date());
+
+                SimpleDateFormat myFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+                try {
+                    Date date = new Date();
+                    note.setNoteDate(myFormat.format(date));
+                } catch (ParseException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
                 NotesDatabaseHandler notesDatabaseHandler = new NotesDatabaseHandler(getContext());
                 notesDatabaseHandler.addNote(note);
                 break;
