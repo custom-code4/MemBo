@@ -1,7 +1,5 @@
 package com.example.arjun.myapplication.Data;
 
-import java.util.Date;
-
 /**
  * Created by Arjun on 11-11-2017.
  */
@@ -14,9 +12,9 @@ public class Note {
     }
 
     String noteContent;
-    Date noteDate;
+    String noteDate;
 
-    public Note(int noteID, String noteTitle, String noteContent, Date noteDate) {
+    public Note(int noteID, String noteTitle, String noteContent, String  noteDate) {
         this.noteID = noteID;
         this.noteTitle = noteTitle;
         this.noteContent = noteContent;
@@ -47,11 +45,11 @@ public class Note {
         this.noteContent = noteContent;
     }
 
-    public Date getNoteDate() {
+    public String getNoteDate() {
         return noteDate;
     }
 
-    public void setNoteDate(Date noteDate) {
+    public void setNoteDate(String noteDate) {
         this.noteDate = noteDate;
     }
 }

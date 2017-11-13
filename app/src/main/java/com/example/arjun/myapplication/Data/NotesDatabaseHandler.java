@@ -7,12 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
 
 /**
  * Created by Arjun on 12-11-2017.
@@ -35,6 +30,7 @@ public class NotesDatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_NOTE_TITLE = "noteTitle";
     private static final String KEY_NOTE_CONTENT = "noteContent";
     private static final String KEY_NOTE_DATE = "noteDate";
+    private static final String TAG = "NotesDatabaseHandler";
 
     public NotesDatabaseHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -84,18 +80,8 @@ public class NotesDatabaseHandler extends SQLiteOpenHelper {
         if (cursor != null)
             cursor.moveToFirst();
 
-
-        try{
-            SimpleDateFormat formatter=new SimpleDateFormat("dd/MM/yyyy");
-            Date d=formatter.parse(cursor.getString(3));
-            note = new Note(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), d);
-            // return contact
-            return note;
-        }
-        catch (ParseException e)
-        {}
-
-        return null;
+        note = new Note(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3));
+        return note;
     }
 
     // Getting All Notes
@@ -115,21 +101,18 @@ public class NotesDatabaseHandler extends SQLiteOpenHelper {
                     note.setNoteID(Integer.parseInt(cursor.getString(0)));
                     note.setNoteTitle(cursor.getString(1));
                     note.setNoteContent(cursor.getString(2));
-                    DateFormat formatter=new SimpleDateFormat("dd/MM/yyyy");
-                    String s = cursor.getString(3).toString();
-                    Date d=formatter.parse(s);
-                    note = new Note(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), d);
+                    note = new Note(Integer.parseInt(cursor.getString(0)), cursor.getString(1), cursor.getString(2), cursor.getString(3));
                     // Adding contact to list
                     noteList.add(note);
-                }
-                catch (ParseException e)
+                } catch (Exception e)
                 {
-                    Log.e("catch","database error");
+                    Log.e("catch", "database error " + e.getMessage());
                 }
             } while (cursor.moveToNext());
         }
 
         // return notes list
+        Log.d(TAG, "noteList size " + noteList.size());
         return noteList;
     }
 
